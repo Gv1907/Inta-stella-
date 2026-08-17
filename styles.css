@@ -1,0 +1,255 @@
+:root {
+  --bg-1: #050b08;
+  --bg-2: #0d1714;
+  --bg-3: #17372d;
+  --card: rgba(10, 20, 17, 0.78);
+  --primary: #5ecf9a;
+  --primary-dark: #2a8f66;
+  --secondary: #8fe0bc;
+  --text: #edf8f1;
+  --muted: #c3d9ce;
+  --shadow: rgba(16, 37, 30, 0.6);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Inter", sans-serif;
+  background: radial-gradient(circle at top, rgba(53, 110, 87, 0.35), transparent 35%), linear-gradient(135deg, var(--bg-1), var(--bg-2), var(--bg-3));
+  color: var(--text);
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.intro-screen {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at center, rgba(94, 207, 154, 0.18), rgba(5, 11, 8, 0.96) 50%);
+  z-index: 20;
+  animation: introFade 2.8s ease forwards;
+}
+
+.intro-card {
+  text-align: center;
+  padding: 1.5rem 2.5rem;
+  border: 1px solid rgba(94, 207, 154, 0.35);
+  border-radius: 24px;
+  background: rgba(10, 20, 17, 0.72);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+  animation: introPop 1.2s ease forwards;
+}
+
+.intro-label {
+  margin: 0;
+  color: var(--secondary);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.intro-card h2 {
+  margin: 0.7rem 0 0;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  color: var(--text);
+}
+
+.container {
+  width: min(90vw, 760px);
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(26px);
+  animation: revealLetter 0.9s ease 1.4s forwards;
+}
+
+.card {
+  background: var(--card);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(110, 195, 156, 0.35);
+  border-radius: 30px;
+  box-shadow: 0 30px 80px var(--shadow);
+  padding: clamp(1.5rem, 3vw, 3rem);
+  text-align: center;
+}
+
+.tag {
+  display: inline-block;
+  margin: 0 0 1rem;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  background: rgba(94, 207, 154, 0.12);
+  color: var(--secondary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  color: var(--text);
+}
+
+.message {
+  margin-top: 1.8rem;
+  font-size: 1.08rem;
+  line-height: 1.8;
+  color: var(--text);
+}
+
+.message p {
+  margin: 0.9rem 0;
+}
+
+.highlight {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--secondary);
+}
+
+.final-note {
+  margin-top: 2rem;
+  padding: 1.1rem 1.2rem;
+  border-radius: 18px;
+  background: rgba(12, 24, 20, 0.9);
+  border: 1px solid rgba(110, 195, 156, 0.35);
+  color: var(--text);
+  font-weight: 600;
+}
+
+.final-note p {
+  margin: 0.35rem 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.floating-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.floating-hearts span {
+  position: absolute;
+  font-size: clamp(1.3rem, 2vw, 2rem);
+  color: rgba(94, 207, 154, 0.75);
+  animation: floatUp linear infinite;
+}
+
+.floating-hearts span:nth-child(1) { left: 10%; top: 80%; animation-duration: 12s; }
+.floating-hearts span:nth-child(2) { left: 24%; top: 20%; animation-duration: 15s; }
+.floating-hearts span:nth-child(3) { left: 38%; top: 72%; animation-duration: 13s; }
+.floating-hearts span:nth-child(4) { left: 46%; top: 30%; animation-duration: 16s; }
+.floating-hearts span:nth-child(5) { left: 58%; top: 58%; animation-duration: 18s; }
+.floating-hearts span:nth-child(6) { left: 70%; top: 25%; animation-duration: 14s; }
+.floating-hearts span:nth-child(7) { left: 82%; top: 68%; animation-duration: 17s; }
+.floating-hearts span:nth-child(8) { left: 90%; top: 45%; animation-duration: 12s; }
+
+@keyframes introFade {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes introPop {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes revealLetter {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.8) rotate(0deg);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-120vh) scale(1.3) rotate(14deg);
+  }
+}
+
+#confetti-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 16px;
+  border-radius: 3px;
+  animation: confettiFall 2.6s ease-in forwards;
+  opacity: 0.9;
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(540deg) scale(0.8);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .card {
+    border-radius: 24px;
+    padding: 1.3rem 1rem 1.5rem;
+  }
+}
